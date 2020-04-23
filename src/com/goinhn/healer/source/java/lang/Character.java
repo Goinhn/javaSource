@@ -6494,6 +6494,8 @@ class Character implements java.io.Serializable, Comparable<Character> {
     }
 
     /**
+     * 将char类型按照指定的进制转换为数字
+     *
      * Returns the numeric value of the character {@code ch} in the
      * specified radix.
      * <p>

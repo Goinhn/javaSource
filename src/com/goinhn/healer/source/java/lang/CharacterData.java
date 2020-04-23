@@ -73,6 +73,12 @@ abstract class CharacterData {
     // in negative cases for some accessors due to complicated ranges.
     // Should revisit after optimization of table initialization.
 
+    /**
+     * 调用不同继承类下的digit重写函数
+     *
+     * @param ch
+     * @return
+     */
     static final CharacterData of(int ch) {
         if (ch >>> 8 == 0) {     // fast-path
             return CharacterDataLatin1.instance;
