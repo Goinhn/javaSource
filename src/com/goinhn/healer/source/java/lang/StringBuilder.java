@@ -68,20 +68,23 @@ package java.lang;
  * or method in this class will cause a {@link NullPointerException} to be
  * thrown.
  *
- * @author      Michael McCloskey
- * @see         java.lang.StringBuffer
- * @see         java.lang.String
- * @since       1.5
+ * @author Michael McCloskey
+ * @see java.lang.StringBuffer
+ * @see java.lang.String
+ * @since 1.5
  */
 public final class StringBuilder
-    extends AbstractStringBuilder
-    implements java.io.Serializable, CharSequence
-{
+        extends AbstractStringBuilder
+        implements java.io.Serializable, CharSequence {
 
-    /** use serialVersionUID for interoperability */
+    /**
+     * use serialVersionUID for interoperability
+     */
     static final long serialVersionUID = 4383685877147921099L;
 
     /**
+     * 默认初始化构造一个16长度的char
+     * <p>
      * Constructs a string builder with no characters in it and an
      * initial capacity of 16 characters.
      */
@@ -90,12 +93,14 @@ public final class StringBuilder
     }
 
     /**
+     * 初始化构造的长度可以控制
+     * <p>
      * Constructs a string builder with no characters in it and an
      * initial capacity specified by the {@code capacity} argument.
      *
-     * @param      capacity  the initial capacity.
-     * @throws     NegativeArraySizeException  if the {@code capacity}
-     *               argument is less than {@code 0}.
+     * @param capacity the initial capacity.
+     * @throws NegativeArraySizeException if the {@code capacity}
+     *                                    argument is less than {@code 0}.
      */
     public StringBuilder(int capacity) {
         super(capacity);
@@ -106,7 +111,7 @@ public final class StringBuilder
      * specified string. The initial capacity of the string builder is
      * {@code 16} plus the length of the string argument.
      *
-     * @param   str   the initial contents of the buffer.
+     * @param str the initial contents of the buffer.
      */
     public StringBuilder(String str) {
         super(str.length() + 16);
@@ -114,12 +119,14 @@ public final class StringBuilder
     }
 
     /**
+     * 输入字符串的长度最后拼接上16个位数
+     * <p>
      * Constructs a string builder that contains the same characters
      * as the specified {@code CharSequence}. The initial capacity of
      * the string builder is {@code 16} plus the length of the
      * {@code CharSequence} argument.
      *
-     * @param      seq   the sequence to copy.
+     * @param seq the sequence to copy.
      */
     public StringBuilder(CharSequence seq) {
         this(seq.length() + 16);
@@ -153,8 +160,8 @@ public final class StringBuilder
      * <i>n</i>; otherwise, it is equal to the character at index <i>k-n</i>
      * in the argument {@code sb}.
      *
-     * @param   sb   the {@code StringBuffer} to append.
-     * @return  a reference to this object.
+     * @param sb the {@code StringBuffer} to append.
+     * @return a reference to this object.
      */
     public StringBuilder append(StringBuffer sb) {
         super.append(sb);
@@ -168,7 +175,7 @@ public final class StringBuilder
     }
 
     /**
-     * @throws     IndexOutOfBoundsException {@inheritDoc}
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @Override
     public StringBuilder append(CharSequence s, int start, int end) {
@@ -268,8 +275,7 @@ public final class StringBuilder
      */
     @Override
     public StringBuilder insert(int index, char[] str, int offset,
-                                int len)
-    {
+                                int len) {
         super.insert(index, str, offset, len);
         return this;
     }
@@ -279,8 +285,8 @@ public final class StringBuilder
      */
     @Override
     public StringBuilder insert(int offset, Object obj) {
-            super.insert(offset, obj);
-            return this;
+        super.insert(offset, obj);
+        return this;
     }
 
     /**
@@ -306,8 +312,8 @@ public final class StringBuilder
      */
     @Override
     public StringBuilder insert(int dstOffset, CharSequence s) {
-            super.insert(dstOffset, s);
-            return this;
+        super.insert(dstOffset, s);
+        return this;
     }
 
     /**
@@ -315,8 +321,7 @@ public final class StringBuilder
      */
     @Override
     public StringBuilder insert(int dstOffset, CharSequence s,
-                                int start, int end)
-    {
+                                int start, int end) {
         super.insert(dstOffset, s, start, end);
         return this;
     }
@@ -404,22 +409,25 @@ public final class StringBuilder
     @Override
     public String toString() {
         // Create a copy, don't share the array
+//        构造一个新的String
         return new String(value, 0, count);
     }
 
     /**
+     * 存储到流中
+     *
      * Save the state of the {@code StringBuilder} instance to a stream
      * (that is, serialize it).
      *
      * @serialData the number of characters currently stored in the string
-     *             builder ({@code int}), followed by the characters in the
-     *             string builder ({@code char[]}).   The length of the
-     *             {@code char} array may be greater than the number of
-     *             characters currently stored in the string builder, in which
-     *             case extra characters are ignored.
+     * builder ({@code int}), followed by the characters in the
+     * string builder ({@code char[]}).   The length of the
+     * {@code char} array may be greater than the number of
+     * characters currently stored in the string builder, in which
+     * case extra characters are ignored.
      */
     private void writeObject(java.io.ObjectOutputStream s)
-        throws java.io.IOException {
+            throws java.io.IOException {
         s.defaultWriteObject();
         s.writeInt(count);
         s.writeObject(value);
@@ -430,7 +438,7 @@ public final class StringBuilder
      * a stream.
      */
     private void readObject(java.io.ObjectInputStream s)
-        throws java.io.IOException, ClassNotFoundException {
+            throws java.io.IOException, ClassNotFoundException {
         s.defaultReadObject();
         count = s.readInt();
         value = (char[]) s.readObject();

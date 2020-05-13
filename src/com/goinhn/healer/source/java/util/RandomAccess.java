@@ -26,6 +26,8 @@
 package java.util;
 
 /**
+ * 支持快速随机访问
+ *
  * Marker interface used by <tt>List</tt> implementations to indicate that
  * they support fast (generally constant time) random access.  The primary
  * purpose of this interface is to allow generic algorithms to alter their

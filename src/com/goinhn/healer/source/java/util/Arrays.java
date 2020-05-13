@@ -3312,6 +3312,8 @@ public class Arrays {
     }
 
     /**
+     * 内部调用System的数组拷贝方法
+     *
      * Copies the specified array, truncating or padding with null characters (if necessary)
      * so the copy has the specified length.  For all indices that are valid
      * in both the original array and the copy, the two arrays will contain

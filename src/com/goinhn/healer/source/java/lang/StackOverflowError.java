@@ -33,7 +33,8 @@ package java.lang;
  * @since   JDK1.0
  */
 public
-class StackOverflowError extends VirtualMachineError {
+class
+StackOverflowError extends VirtualMachineError {
     private static final long serialVersionUID = 8609175038441759607L;
 
     /**

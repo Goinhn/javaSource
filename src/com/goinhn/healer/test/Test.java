@@ -1,38 +1,37 @@
 package com.goinhn.healer.test;
 
-public class Test {
+
+import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class Test implements Cloneable {
 
     public static void main(String[] args) {
-        int a = 101;
-        int b = 100;
 
-        Integer c = Integer.divideUnsigned(a, b);
-        System.out.println(c);
+        Set<String> set = new TreeSet<>();
 
-        Boolean f = false;
+        PriorityQueue<String> pr = new PriorityQueue<>();
 
-        System.out.println(f.hashCode());
+        Map<String, Integer> map = new HashMap<>();
 
-        System.out.println(Integer.bitCount(256));
+        map.put("begin", 1);
 
-        Short s = 1;
+        Map<String, String> map1 = new ConcurrentHashMap<>();
 
-        Byte x = 10;
-        Byte y = 20;
-        System.out.println(y.compareTo(x));
+        Map<String, String> map2 = new WeakHashMap<>();
 
-        Long l = 100L;
 
-        Float t = 10f;
+        BigInteger bigInteger = new BigInteger(10, new Random(1024));
+        System.out.println(bigInteger);
+
+        BigDecimal bigDecimal = new BigDecimal("11");
+
+
 
     }
 
-    public boolean equals(Object obj) {
-        if (obj instanceof Integer) {
-            return true;
-        }
-
-        return false;
-    }
 
 }

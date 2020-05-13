@@ -350,6 +350,8 @@ class Thread implements Runnable {
     }
 
     /**
+     * 线程的初始化
+     *
      * Initializes a Thread.
      *
      * @param g the Thread group
@@ -438,6 +440,8 @@ class Thread implements Runnable {
     }
 
     /**
+     * 分配一个新的线程对象
+     *
      * Allocates a new {@code Thread} object. This constructor has the same
      * effect as {@linkplain #Thread(ThreadGroup,Runnable,String) Thread}
      * {@code (null, null, gname)}, where {@code gname} is a newly generated
@@ -449,6 +453,8 @@ class Thread implements Runnable {
     }
 
     /**
+     * 分配一个带有指定目标新的线程对象
+     *
      * Allocates a new {@code Thread} object. This constructor has the same
      * effect as {@linkplain #Thread(ThreadGroup,Runnable,String) Thread}
      * {@code (null, target, gname)}, where {@code gname} is a newly generated
@@ -500,6 +506,8 @@ class Thread implements Runnable {
     }
 
     /**
+     * 分配一个指定名字的新的线程对象
+     *
      * Allocates a new {@code Thread} object. This constructor has the same
      * effect as {@linkplain #Thread(ThreadGroup,Runnable,String) Thread}
      * {@code (null, null, name)}.
@@ -536,6 +544,8 @@ class Thread implements Runnable {
     }
 
     /**
+     * 分配一个带有指定目标新的线程对象并指定名字
+     *
      * Allocates a new {@code Thread} object. This constructor has the same
      * effect as {@linkplain #Thread(ThreadGroup,Runnable,String) Thread}
      * {@code (null, target, name)}.

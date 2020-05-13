@@ -26,6 +26,9 @@
 package java.lang;
 
 /**
+ * 运行时异常
+ * 非受检查异常
+ *
  * {@code RuntimeException} is the superclass of those
  * exceptions that can be thrown during the normal operation of the
  * Java Virtual Machine.
@@ -105,9 +108,9 @@ public class RuntimeException extends Exception {
      * @param cause the cause.  (A {@code null} value is permitted,
      * and indicates that the cause is nonexistent or unknown.)
      * @param enableSuppression whether or not suppression is enabled
-     *                          or disabled
+     *                          or disabled       抑制或者支持
      * @param writableStackTrace whether or not the stack trace should
-     *                           be writable
+     *                           be writable      是否被写入栈中
      *
      * @since 1.7
      */

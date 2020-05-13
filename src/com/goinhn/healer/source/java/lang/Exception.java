@@ -55,6 +55,8 @@ public class Exception extends Throwable {
     }
 
     /**
+     * 填充异常的信息
+     *
      * Constructs a new exception with the specified detail message.  The
      * cause is not initialized, and may subsequently be initialized by
      * a call to {@link #initCause}.
@@ -67,6 +69,8 @@ public class Exception extends Throwable {
     }
 
     /**
+     * 用指定的详细信息和异常构建一个新的异常
+     *
      * Constructs a new exception with the specified detail message and
      * cause.  <p>Note that the detail message associated with
      * {@code cause} is <i>not</i> automatically incorporated in
@@ -85,6 +89,8 @@ public class Exception extends Throwable {
     }
 
     /**
+     * 根据异常来构建一个新的异常对象
+     *
      * Constructs a new exception with the specified cause and a detail
      * message of <tt>(cause==null ? null : cause.toString())</tt> (which
      * typically contains the class and detail message of <tt>cause</tt>).

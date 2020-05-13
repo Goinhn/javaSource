@@ -93,6 +93,8 @@ public class TreeSet<E> extends AbstractSet<E>
     implements NavigableSet<E>, Cloneable, java.io.Serializable
 {
     /**
+     * 使用NavigableMap进行维护
+     *
      * The backing map.
      */
     private transient NavigableMap<E,Object> m;
@@ -108,6 +110,8 @@ public class TreeSet<E> extends AbstractSet<E>
     }
 
     /**
+     * 内部使用TreeMap进行维护
+     *
      * Constructs a new, empty tree set, sorted according to the
      * natural ordering of its elements.  All elements inserted into
      * the set must implement the {@link Comparable} interface.

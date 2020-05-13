@@ -122,6 +122,8 @@ public class Throwable implements Serializable {
     private transient Object backtrace;
 
     /**
+     * 异常的详细信息
+     *
      * Specific details about the Throwable.  For example, for
      * {@code FileNotFoundException}, this contains the name of
      * the file that could not be found.
@@ -155,6 +157,8 @@ public class Throwable implements Serializable {
     }
 
     /**
+     * 描述异常轨迹的数组
+     *
      * A shared value for an empty stack.
      */
     private static final StackTraceElement[] UNASSIGNED_STACK = new StackTraceElement[0];
@@ -186,6 +190,11 @@ public class Throwable implements Serializable {
      */
 
     /**
+     * 表示当前异常由那个Throwable引起
+     * 如果为null表示此异常不是由其他Throwable引起的
+     * 如果此对象与自己相同,表明此异常的起因对象还没有被初始化
+     *
+     *
      * The throwable that caused this throwable to get thrown, or null if this
      * throwable was not caused by another throwable, or if the causative
      * throwable is unknown.  If this field is equal to this throwable itself,
@@ -308,7 +317,9 @@ public class Throwable implements Serializable {
      * @since  1.4
      */
     public Throwable(Throwable cause) {
+        //填充异常轨迹数组
         fillInStackTrace();
+        //初始化异常信息描述
         detailMessage = (cause==null ? null : cause.toString());
         this.cause = cause;
     }
@@ -369,6 +380,8 @@ public class Throwable implements Serializable {
     }
 
     /**
+     * 获取详细的信息
+     *
      * Returns the detail message string of this throwable.
      *
      * @return  the detail message string of this {@code Throwable} instance
@@ -379,6 +392,8 @@ public class Throwable implements Serializable {
     }
 
     /**
+     * 获取详细的信息
+     *
      * Creates a localized description of this throwable.
      * Subclasses may override this method in order to produce a
      * locale-specific message.  For subclasses that do not override this
@@ -393,6 +408,9 @@ public class Throwable implements Serializable {
     }
 
     /**
+     * 获取起因对象
+     *
+     *
      * Returns the cause of this throwable or {@code null} if the
      * cause is nonexistent or unknown.  (The cause is the throwable that
      * caused this throwable to get thrown.)
@@ -417,6 +435,10 @@ public class Throwable implements Serializable {
     }
 
     /**
+     * 初始化起因对象，这个方法只能在未被初始化的情况下调用一次
+     *
+     *
+     *
      * Initializes the <i>cause</i> of this throwable to the specified value.
      * (The cause is the throwable that caused this throwable to get thrown.)
      *
@@ -453,16 +475,23 @@ public class Throwable implements Serializable {
      * @since  1.4
      */
     public synchronized Throwable initCause(Throwable cause) {
+        //如果不是为初始化的状态抛出异常
         if (this.cause != this)
             throw new IllegalStateException("Can't overwrite cause with " +
                                             Objects.toString(cause, "a null"), this);
+        //要设置的起因对象和自身相等抛出异常
         if (cause == this)
             throw new IllegalArgumentException("Self-causation not permitted", this);
+        //设置起因对象
         this.cause = cause;
+        //返回该起因对象
         return this;
     }
 
     /**
+     * 字符串的描述形式
+     *
+     *
      * Returns a short description of this throwable.
      * The result is the concatenation of:
      * <ul>
@@ -654,7 +683,9 @@ public class Throwable implements Serializable {
         synchronized (s.lock()) {
             // Print our stack trace
             s.println(this);
+            //获取异常的数组
             StackTraceElement[] trace = getOurStackTrace();
+            //打印出每个元素的字符表示
             for (StackTraceElement traceElement : trace)
                 s.println("\tat " + traceElement);
 
@@ -663,7 +694,9 @@ public class Throwable implements Serializable {
                 se.printEnclosedStackTrace(s, trace, SUPPRESSED_CAPTION, "\t", dejaVu);
 
             // Print cause, if any
+            //获取起因对象
             Throwable ourCause = getCause();
+            // 递归打印出起因的信息
             if (ourCause != null)
                 ourCause.printEnclosedStackTrace(s, trace, CAUSE_CAPTION, "", dejaVu);
         }
@@ -787,6 +820,7 @@ public class Throwable implements Serializable {
         return this;
     }
 
+    //填充异常轨迹数组
     private native Throwable fillInStackTrace(int dummy);
 
     /**
