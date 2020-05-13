@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/javasource.iml" filepath="$PROJECT_DIR$/javasource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdk8source.iml" filepath="$PROJECT_DIR$/jdk8source.iml" />
     </modules>
   </component>
 </project>
